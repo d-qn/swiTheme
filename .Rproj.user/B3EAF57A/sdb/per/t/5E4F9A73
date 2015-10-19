@@ -1,0 +1,18 @@
+{
+    "contents" : "library(countrycode)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(swiTheme)\nlibrary(swiMap)\n\n#### Load the data \nread.data <- read.csv(\"data/asylumCH_originsByCantons_googleTransated.csv\", stringsAsFactors = F)\n\nread.data$Valeur <- as.numeric(gsub(\"'\", \"\", read.data$Valeur))\ncountries <- unique(read.data$en)\ncountries <- data.frame(ori = countries, \n   cn = countrycode(countries, origin=\"country.name\", destination=\"country.name\"), \n   stringsAsFactors = F)\n\ncountries[which(is.na(countries[,2])),]\n\n# manual fix! \ncountries[which(countries$ori == \"Zentralafr. Republic\"), 2] <- \"Central African Republic\"\ncountries[which(is.na(countries[,2])),]\n\n# get iso2 \ncountries$iso2 <- countrycode(countries$cn, origin=\"country.name\", destination=\"iso2c\")\n\n#### reshape the data\ndata <- cbind(read.data, countries[match(read.data$en, countries$ori), c('cn', 'iso2')]) %>%\n  select(Canton, Valeur, cn, iso2) %>% group_by(Canton, iso2, cn) %>% \n  summarise(value = sum(Valeur)) %>% ungroup()\n\n\n### compute for each canton, the proportion of each origin\ndata$cn <- factor(data$cn)\ndata <- data %>% group_by(Canton) %>% mutate(cantonSum = sum(value)) %>% ungroup()\ndata <- data %>% group_by(cn) %>% mutate(perOriByCanton =  round((value / cantonSum) * 100, 2)) %>% ungroup()\n\ntopOri <- head(data %>% group_by(cn) %>% summarise(oriSum = sum(value)) %>% \n  arrange(desc(oriSum)), 6)$cn\n\nggplot(filter(data, cn %in% topOri)) + geom_bar(aes(Canton, perOriByCanton), stat = \"identity\") + facet_wrap(~ cn) + \n  theme_bw()",
+    "created" : 1443021863058.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1366031576",
+    "id" : "5E4F9A73",
+    "lastKnownWriteTime" : 1443087816,
+    "path" : "~/Google Drive/swissinfo/2015_09_23_asylumCHbyCantons/01_cleanAndPlot.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
