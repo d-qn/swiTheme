@@ -26,7 +26,7 @@ theme_swi <- function(ticks=TRUE, base_family="Open Sans", base_size=11) {
       axis.line         =  element_line(linetype = "solid", size = 0.1),
       plot.margin = unit(c(2, 1, 1, 1), "lines"),
       panel.grid = element_blank()
-      )
+    )
   if (!ticks) {
     ret <- ret + theme(axis.ticks = element_blank())
   }
@@ -47,31 +47,33 @@ theme_swi <- function(ticks=TRUE, base_family="Open Sans", base_size=11) {
 theme_swiYLines <- function(
   yaxis=FALSE, base_family="Open Sans", base_family2 = "Open Sans Semibold",
   base_size=11, axisColor = "#7E8279") {
-
+  
   choose_font(base_family, FALSE)
   choose_font(base_family2, FALSE)
-
+  
   ret <- theme_minimal(base_family=base_family, base_size=base_size) +
     theme(
       plot.title   = element_text(hjust = 0, vjust = 5, size = rel(2), face = "bold"),
       ## AXIS
       axis.text    = element_text(size = rel(1.3)),
+      axis.text.x    = element_text(vjust = 1.4),
+      axis.text.y    = element_text(vjust = -0.3, hjust = 2),
       axis.title   = element_text(size = rel(1.6), family = base_family2, color = axisColor),
-      axis.title.x = element_text(hjust = 1, vjust = -0.15),
+      axis.title.x = element_text(hjust = 1, vjust = 3),
       axis.title.y = element_text(vjust = 1, hjust = 1),
       axis.line    =  element_line(linetype = "solid", size = 0.9, color = axisColor, lineend = "round"),
       axis.ticks   =  element_line(size = 0.3,  color = axisColor),
       axis.ticks.y =  element_blank(),
-      axis.ticks.length = unit(2.5, "mm"),
+      axis.ticks.length = unit(2.6, "mm"),
       ## PLOT MARGIN
-      plot.margin = unit(c(2, 1, 1.5, 1), "cm"),
+      plot.margin = unit(c(2.2, 1, 1.8, 1), "cm"),
       ## GRID LINES
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank(),
       panel.grid.minor.y = element_blank(),
-      panel.grid.major.y = element_line(colour = "lightgrey", size = 0.05, lineend = "round"),
+      panel.grid.major.y = element_line(colour = "lightgrey", size = 0.1, lineend = "round"),
       legend.key.size = unit(0.5, "cm")
-   )
+    )
   if(!yaxis) {
     ret <- ret + theme(axis.line.y = element_blank())
   }
@@ -92,10 +94,10 @@ theme_swiYLines <- function(
 theme_swi2 <- function(
   base_family="Open Sans", base_family2 = "Open Sans Semibold",
   base_size=11, axisColor = "#7E8279") {
-
+  
   choose_font(base_family, FALSE)
   choose_font(base_family2, FALSE)
-
+  
   ret <- theme_minimal(base_family=base_family, base_size=base_size) +
     theme(
       plot.title   = element_text(hjust = 0, vjust = 5, size = rel(2), face = "bold"),
