@@ -14,3 +14,4 @@ Depends:
     gridExtra
 Description: More about what it does (maybe more than one line)
 License: GNU
+RoxygenNote: 5.0.1

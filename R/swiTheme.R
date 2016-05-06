@@ -1,8 +1,72 @@
 ##' swissinfo.ch's chart theme
 ##'
-##' swissinfo minimal font and color ggplot2 theme
+##' swi_theme(): ggplot copied/inspired from https://gist.github.com/hrbrmstr/283850725519e502e70c
 ##'
 ##' @name theme_swi
+##' @param base_family Base font family
+##' @param y_gridlines logical, display y gridlines
+##' @import ggplot2 scales grid
+##' @importFrom extrafont loadfonts choose_font
+##' @export
+##' @examples
+##' # swi_theme() with annotations
+##' gg <- qplot(1:10, 1:10) + swi_theme()
+##' # add y-axis label 
+##' gg <- gg + geom_label(aes(x = 0, y = 10, label="y label text"),
+##'   family = "OpenSans-CondensedLight", size=3.5, 
+##'   hjust=0, label.size=0, color="#2b2b2b")
+##' # basic axis scale and breaks
+##' gg <- gg + scale_x_continuous(expand=c(0,0), breaks = seq(0, 10, by=2), 
+##'   labels = seq(0, 10, by=2), limits=c(0, 10.2), name = NULL)
+##' gg <- gg + scale_y_continuous(expand=c(0,0.3), breaks=seq(1, 10, by=1), limits=c(0, 10.2))
+##' # footnote / caption / subtitle
+##' caption <- "Note: Vacancies are counted as the number of days between a justice's death, retirement or resignation and the successor justice's swearing in (or commissioning in the case of a recess appointment) as a member of the court.Sources: U.S. Senate, 'Supreme Court Nominations, present-1789'; Supreme Court, 'Members of the Supreme Court of the United States'; Pew Research Center calculations"
+##' caption  <- paste0(strwrap(caption, 160), sep="", collapse="\n")
+##' subtitle <- "Here is a subtitle text. It describes what is displayed in the chart. It can mention many important details to under the graphic."
+##' subtitle  <- paste0(strwrap(subtitle, 160), sep="", collapse="\n") 
+## # Define the axis labels, footnote and subtitle
+##' gg <- gg + labs(x=NULL, y=NULL, title="This is a title, choose it wisely",
+##' subtitle=subtitle, caption=caption)
+##' #annotations TODO !!!!
+##' 
+
+swi_theme <- function(
+  base_family = "OpenSans-CondensedLight", 
+  title_family = "OpenSans-Light",
+  subtitle = "OpenSans-CondensedLightItalic",
+  y_gridlines = TRUE,
+  base_color = "#2b2b2b") {
+  
+  ret <- theme_minimal(base_family = base_family)
+  ret <- ret + theme(panel.grid=element_line())
+  if(y_gridlines) {
+    ret <- ret + theme(panel.grid.major.y=element_line(color="#2b2b2b", linetype="dotted", size=0.15))    
+  }
+  else {
+    ret <- ret + theme(panel.grid.major.y=element_blank())
+  }
+  ret <- ret + theme(panel.grid.major.x=element_blank())
+  ret <- ret + theme(panel.grid.minor.x=element_blank())
+  ret <- ret + theme(panel.grid.minor.y=element_blank())
+  ret <- ret + theme(axis.line=element_line())
+  ret <- ret + theme(axis.line.x=element_line(color=base_color, size=0.15))
+  ret <- ret + theme(axis.ticks=element_line())
+  ret <- ret + theme(axis.ticks.x=element_line(color=base_color, size=0.15))
+  ret <- ret + theme(axis.ticks.y=element_blank())
+  ret <- ret + theme(axis.ticks.length=unit(5, "pt"))
+  ret <- ret + theme(plot.margin=unit(rep(0.5, 4), "cm"))
+  ret <- ret + theme(axis.text.y=element_text(margin=margin(r=-5)))
+  ret <- ret + theme(plot.title=element_text(family=title_family, size = 18, margin=margin(b=15)))
+  ret <- ret + theme(plot.subtitle=element_text(family="OpenSans-CondensedLightItalic"))
+  ret <- ret + theme(plot.caption=element_text(size=8, hjust=0, margin=margin(t=15)))
+  ret
+}
+
+##' swissinfo.ch's chart theme
+##'
+##' swissinfo minimal font and color ggplot2 theme
+##'
+##' @rdname theme_swi
 ##' @param ticks \code{logical} Show axis ticks?
 ##' @param base_size Base font size
 ##' @param base_family Base font family
@@ -11,11 +75,9 @@
 ##' @export
 ##' @examples
 ##' qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi()
-##'
 ##' qplot(mtcars$mpg) + theme_swi()
 ##'
 ##'
-
 theme_swi <- function(ticks=TRUE, base_family="Open Sans", base_size=11) {
   choose_font(base_family, FALSE)
   ret <- theme_minimal(base_family=base_family, base_size=base_size) +
