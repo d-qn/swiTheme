@@ -31,13 +31,14 @@
 ##' 
 
 swi_theme <- function(
+  base_size = 12,
   base_family = "OpenSans-CondensedLight", 
   title_family = "OpenSans-Light",
   subtitle = "OpenSans-CondensedLightItalic",
   y_gridlines = TRUE,
   base_color = "#2b2b2b") {
   
-  ret <- theme_minimal(base_family = base_family)
+  ret <- theme_minimal(base_family = base_family, base_size = base_size)
   ret <- ret + theme(panel.grid=element_line())
   if(y_gridlines) {
     ret <- ret + theme(panel.grid.major.y=element_line(color="#2b2b2b", linetype="dotted", size=0.15))    

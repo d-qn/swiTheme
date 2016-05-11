@@ -8,7 +8,7 @@
 \alias{theme_swiYLines}
 \title{swissinfo.ch's chart theme}
 \usage{
-swi_theme(base_family = "OpenSans-CondensedLight",
+swi_theme(base_size = 12, base_family = "OpenSans-CondensedLight",
   title_family = "OpenSans-Light",
   subtitle = "OpenSans-CondensedLightItalic", y_gridlines = TRUE,
   base_color = "#2b2b2b")
@@ -25,13 +25,13 @@ theme_swi2(base_family = "Open Sans", base_family2 = "Open Sans Semibold",
 theme_swiMin(base_family = "Open Sans", base_size = 11)
 }
 \arguments{
+\item{base_size}{Base font size}
+
 \item{base_family}{Base font family}
 
 \item{y_gridlines}{logical, display y gridlines}
 
 \item{ticks}{\code{logical} Show axis ticks?}
-
-\item{base_size}{Base font size}
 
 \item{base_family2}{secondary font family}
 
@@ -63,8 +63,8 @@ gg <- gg + geom_label(aes(x = 0, y = 10, label="y label text"),
   hjust=0, label.size=0, color="#2b2b2b")
 # basic axis scale and breaks
 gg <- gg + scale_x_continuous(expand=c(0,0), breaks = seq(0, 10, by=2), 
-  labels = seq(0, 10, by=2), limits=c(0, 10.5), name = NULL)
-gg <- gg + scale_y_continuous(expand=c(0,0.5), breaks=seq(1, 10, by=1), limits=c(0, 10.5))
+  labels = seq(0, 10, by=2), limits=c(0, 10.2), name = NULL)
+gg <- gg + scale_y_continuous(expand=c(0,0.3), breaks=seq(1, 10, by=1), limits=c(0, 10.2))
 # footnote / caption / subtitle
 caption <- "Note: Vacancies are counted as the number of days between a justice's death, retirement or resignation and the successor justice's swearing in (or commissioning in the case of a recess appointment) as a member of the court.Sources: U.S. Senate, 'Supreme Court Nominations, present-1789'; Supreme Court, 'Members of the Supreme Court of the United States'; Pew Research Center calculations"
 caption  <- paste0(strwrap(caption, 160), sep="", collapse="\\n")
@@ -72,6 +72,7 @@ subtitle <- "Here is a subtitle text. It describes what is displayed in the char
 subtitle  <- paste0(strwrap(subtitle, 160), sep="", collapse="\\n") 
 gg <- gg + labs(x=NULL, y=NULL, title="This is a title, choose it wisely",
 subtitle=subtitle, caption=caption)
+#annotations TODO !!!!
 
 qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi()
 qplot(mtcars$mpg) + theme_swi()
