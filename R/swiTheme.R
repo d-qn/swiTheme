@@ -41,10 +41,15 @@ swi_theme <- function(
   ret <- theme_minimal(base_family = base_family, base_size = base_size)
   ret <- ret + theme(panel.grid=element_line())
   if(y_gridlines) {
-    ret <- ret + theme(panel.grid.major.y=element_line(color="#2b2b2b", linetype="dotted", size=0.15))    
+    ret <- ret + theme(
+      panel.grid.major.y=element_line(color="#2b2b2b", linetype="dotted", size=0.15),
+      axis.ticks.y=element_blank(),
+      axis.text.y=element_text(margin=margin(r=-5))
+      )    
   }
   else {
     ret <- ret + theme(panel.grid.major.y=element_blank())
+    ret <- ret + theme(axis.ticks.y = element_line(color=base_color, size=0.25))
   }
   ret <- ret + theme(panel.grid.major.x=element_blank())
   ret <- ret + theme(panel.grid.minor.x=element_blank())
@@ -53,12 +58,11 @@ swi_theme <- function(
   ret <- ret + theme(axis.line.x=element_line(color=base_color, size=0.15))
   ret <- ret + theme(axis.ticks=element_line())
   ret <- ret + theme(axis.ticks.x=element_line(color=base_color, size=0.15))
-  ret <- ret + theme(axis.ticks.y=element_blank())
+
   ret <- ret + theme(axis.ticks.length=unit(5, "pt"))
   ret <- ret + theme(plot.margin=unit(rep(0.5, 4), "cm"))
-  ret <- ret + theme(axis.text.y=element_text(margin=margin(r=-5)))
   ret <- ret + theme(plot.title=element_text(family=title_family, size = 18, margin=margin(b=15)))
-  ret <- ret + theme(plot.subtitle=element_text(family="OpenSans-CondensedLightItalic"))
+  ret <- ret + theme(plot.subtitle=element_text(family=subtitle))
   ret <- ret + theme(plot.caption=element_text(size=8, hjust=0, margin=margin(t=15)))
   ret
 }
