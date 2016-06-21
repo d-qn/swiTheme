@@ -5,7 +5,8 @@
 ##' @name theme_swi
 ##' @param base_family Base font family
 ##' @param y_gridlines logical, display y gridlines
-##' @import ggplot2 scales grid
+##' @import ggplot2  
+##' @importFrom grid unit
 ##' @importFrom extrafont loadfonts choose_font
 ##' @export
 ##' @examples
@@ -75,7 +76,9 @@ swi_theme <- function(
 ##' @param ticks \code{logical} Show axis ticks?
 ##' @param base_size Base font size
 ##' @param base_family Base font family
-##' @import ggplot2 scales grid
+##' @import ggplot2 
+##' @importFrom scales alpha
+##' @importFrom grid unit
 ##' @importFrom extrafont loadfonts choose_font
 ##' @export
 ##' @examples
