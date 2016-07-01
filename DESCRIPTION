@@ -7,9 +7,7 @@ Author: Duc-Quang Nguyen
 Maintainer: Duc-Quang Nguyen <ducquang.nguyen@swssinfo.ch>
 Imports:
     ggplot2 (>= 2.1.0),
-    scales,
     extrafont,
-    grid,
     gridExtra
 Description: More about what it does (maybe more than one line)
 License: GNU

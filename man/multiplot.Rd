@@ -22,6 +22,7 @@ Arrange different ggplot objects on the same page
 If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE), then plot 1 will go in the upper left, 2 will go in the upper right, and ll go all the way across the bottom.
 }
 \examples{
+require(ggplot2)
 q1 <- qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi2()
 q2 <- qplot(mpg, data = mtcars, geom = "dotplot") + theme_swi()
 multiplot(list(q1, q2))

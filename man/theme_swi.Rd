@@ -29,15 +29,19 @@ theme_swiMin(base_family = "Open Sans", base_size = 11)
 
 \item{base_family}{Base font family}
 
-\item{y_gridlines}{logical, display y gridlines}
+\item{title_family, }{a string typeface for title}
+
+\item{subtitle, }{a string typeface for subtitle}
+
+\item{y_gridlines, }{a logical display y gridlines?}
+
+\item{base_color, }{a colour string used for the axis lines}
 
 \item{ticks}{\code{logical} Show axis ticks?}
 
 \item{base_family2}{secondary font family}
 
 \item{axisColor}{the color for the axis and their ticks and labels}
-
-\item{base_family}{Base font family}
 
 \item{axisColor}{the color for the axis and their ticks and labels}
 

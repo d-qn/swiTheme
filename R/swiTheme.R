@@ -3,11 +3,13 @@
 ##' swi_theme(): ggplot copied/inspired from https://gist.github.com/hrbrmstr/283850725519e502e70c
 ##'
 ##' @name theme_swi
-##' @param base_family Base font family
-##' @param y_gridlines logical, display y gridlines
+##' @param y_gridlines, a logical display y gridlines?
+##' @param title_family, a string typeface for title
+##' @param subtitle, a string typeface for subtitle
+##' @param base_color, a colour string used for the axis lines
 ##' @import ggplot2  
-##' @importFrom grid unit
 ##' @importFrom extrafont loadfonts choose_font
+##' @inheritParams ggplot2::theme_minimal
 ##' @export
 ##' @examples
 ##' # swi_theme() with annotations
