@@ -1,5 +1,9 @@
 
 ##' swissinfo.ch standard color palette
+##' 
+##' Just a bunch of hex color vectors...
+##' 
+##' Color palette as vector (no function). Colors can be sequential (one color), diverging (2 colors) 
 ##'
 ##' @rdname colors_swi
 ##' @export

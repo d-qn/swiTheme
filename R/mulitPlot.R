@@ -2,6 +2,8 @@
 ##' 
 ##' To arrange multiple ggplot chart on a grid. Copied from: http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
 ##'
+##'  Arrange different ggplot objects on the same page
+##'
 ##' @param plots a list of ggplot objects
 ##' @param cols Number of columns in layout
 ##' @param layout A matrix specifying the layout. If present, 'cols' is ignored.

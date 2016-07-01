@@ -21,9 +21,12 @@ swi_dpal2
 swi_spal
 }
 \description{
-swissinfo.ch standard color palette
+Just a bunch of hex color vectors...
 
 swissinfo random color palette
+}
+\details{
+Color palette as vector (no function). Colors can be sequential (one color), diverging (2 colors)
 }
 \examples{
 pie(rep(1,length(swi_pal)), col=swi_pal)
