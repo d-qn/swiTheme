@@ -9,7 +9,7 @@
 \title{swissinfo.ch's chart theme}
 \usage{
 swi_theme(base_size = 12, base_family = "OpenSans-CondensedLight",
-  title_family = "OpenSans-Light",
+  title_family = "OpenSans-CondensedBold",
   subtitle = "OpenSans-CondensedLightItalic", y_gridlines = TRUE,
   base_color = "#2b2b2b")
 
@@ -59,6 +59,9 @@ theme_swi2, with grid lines ggplot2 minimal theme
 theme_swiMin, a minimal theme with no axis, no ticks, no axis text, no grid lines
 }
 \examples{
+require(ggplot2)
+require(swiTheme)
+
 # swi_theme() with annotations
 gg <- qplot(1:10, 1:10) + swi_theme()
 # add y-axis label 

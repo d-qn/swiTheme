@@ -12,6 +12,9 @@
 ##' @inheritParams ggplot2::theme_minimal
 ##' @export
 ##' @examples
+##' require(ggplot2)
+##' require(swiTheme)
+##' 
 ##' # swi_theme() with annotations
 ##' gg <- qplot(1:10, 1:10) + swi_theme()
 ##' # add y-axis label 
@@ -36,7 +39,7 @@
 swi_theme <- function(
   base_size = 12,
   base_family = "OpenSans-CondensedLight", 
-  title_family = "OpenSans-Light",
+  title_family = "OpenSans-CondensedBold",
   subtitle = "OpenSans-CondensedLightItalic",
   y_gridlines = TRUE,
   base_color = "#2b2b2b") {
@@ -64,7 +67,7 @@ swi_theme <- function(
 
   ret <- ret + theme(axis.ticks.length=unit(5, "pt"))
   ret <- ret + theme(plot.margin=unit(rep(0.5, 4), "cm"))
-  ret <- ret + theme(plot.title=element_text(family=title_family, size = 18, margin=margin(b=15)))
+  ret <- ret + theme(plot.title=element_text(family=title_family, size = 16, margin=margin(b=15)))
   ret <- ret + theme(plot.subtitle=element_text(family=subtitle))
   ret <- ret + theme(plot.caption=element_text(size=8, hjust=0, margin=margin(t=15)))
   ret
