@@ -37,10 +37,10 @@
 ##' 
 
 swi_theme <- function(
-  base_size = 14,
+  base_size = 12,
   base_family = "OpenSans-CondensedLight", 
   title_family = "OpenSans-CondensedBold",
-  subtitle = "OpenSans-CondensedLightItalic",
+  subtitle = "OpenSans-CondensedLight",
   y_gridlines = TRUE,
   base_color = "#2b2b2b") {
   
@@ -66,10 +66,10 @@ swi_theme <- function(
   ret <- ret + theme(axis.ticks.x=element_line(color=base_color, size=0.15))
 
   ret <- ret + theme(axis.ticks.length=unit(5, "pt"))
-  ret <- ret + theme(plot.margin=unit(rep(0.5, 4), "cm"))
-  ret <- ret + theme(plot.title=element_text(family = title_family, size = base_size * 1.6, margin=margin(b=13)))
+  ret <- ret + theme(plot.margin=unit(c(0.3, 0, 0.3, 0), "cm"))
+  ret <- ret + theme(plot.title=element_text(family = title_family, size = base_size * 1.5, margin=margin(b=13)))
   ret <- ret + theme(plot.subtitle=element_text(family = subtitle))
-  ret <- ret + theme(plot.caption=element_text(size = base_size * 0.7, hjust=0, margin=margin(t=13)))
+  ret <- ret + theme(plot.caption=element_text(size = base_size * 0.8, hjust=0, margin=margin(t=13)))
   ret
 }
 
