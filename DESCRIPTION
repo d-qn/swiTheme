@@ -4,9 +4,9 @@ Title: ggplot2 swissinfo.ch theme
 Version: 0.5
 Date: 2014-11-09
 Author: Duc-Quang Nguyen
-Maintainer: Duc-Quang Nguyen <ducquang.nguyen@swssinfo.ch>
+Maintainer: Duc-Quang Nguyen <ducquang.nguyen@swissinfo.ch>
 Imports:
-    ggplot2 (>= 2.1.0),
+    ggplot2 (>= 2.1.0.9),
     extrafont,
     gridExtra
 Description: More about what it does (maybe more than one line)

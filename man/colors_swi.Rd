@@ -4,6 +4,7 @@
 \name{swi_pal}
 \alias{swi_dpal}
 \alias{swi_dpal2}
+\alias{swi_dpal3}
 \alias{swi_pal}
 \alias{swi_rpal}
 \alias{swi_spal}
@@ -17,6 +18,8 @@ swi_rpal
 swi_dpal
 
 swi_dpal2
+
+swi_dpal3
 
 swi_spal
 }
@@ -32,7 +35,8 @@ Color palette as vector (no function). Colors can be sequential (one color), div
 pie(rep(1,length(swi_pal)), col=swi_pal)
 pie(rep(1,length(swi_rpal)), col=swi_rpal)
 pie(rep(1,length(swi_dpal)), col=swi_dpal)
-pie(rep(1,length(swi_dpal)), col=swi_dpal2)
+pie(rep(1,length(swi_dpal2)), col=swi_dpal2)
+pie(rep(1,length(swi_dpal3)), col=swi_dpal3)
 pie(rep(1,length(swi_spal)), col=swi_spal)
 }
 \keyword{datasets}

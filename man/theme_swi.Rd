@@ -8,7 +8,7 @@
 \alias{theme_swiYLines}
 \title{swissinfo.ch's chart theme}
 \usage{
-swi_theme(base_size = 12, base_family = "OpenSans-CondensedLight",
+swi_theme(base_size = 13, base_family = "OpenSans-CondensedLight",
   title_family = "OpenSans-CondensedBold",
   subtitle = "OpenSans-CondensedLight", y_gridlines = TRUE,
   base_color = "#2b2b2b")
@@ -79,6 +79,7 @@ subtitle <- "Here is a subtitle text. It describes what is displayed in the char
 subtitle  <- paste0(strwrap(subtitle, 160), sep="", collapse="\\n") 
 gg <- gg + labs(x=NULL, y=NULL, title="This is a title, choose it wisely",
 subtitle=subtitle, caption=caption)
+gg
 #annotations TODO !!!!
 
 qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi()

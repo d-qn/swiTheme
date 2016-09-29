@@ -33,11 +33,12 @@
 ## # Define the axis labels, footnote and subtitle
 ##' gg <- gg + labs(x=NULL, y=NULL, title="This is a title, choose it wisely",
 ##' subtitle=subtitle, caption=caption)
+##' gg
 ##' #annotations TODO !!!!
 ##' 
 
 swi_theme <- function(
-  base_size = 12,
+  base_size = 13,
   base_family = "OpenSans-CondensedLight", 
   title_family = "OpenSans-CondensedBold",
   subtitle = "OpenSans-CondensedLight",
@@ -61,6 +62,7 @@ swi_theme <- function(
   ret <- ret + theme(panel.grid.minor.x=element_blank())
   ret <- ret + theme(panel.grid.minor.y=element_blank())
   ret <- ret + theme(axis.line=element_line())
+  ret <- ret + theme(axis.line.y=element_blank())
   ret <- ret + theme(axis.line.x=element_line(color=base_color, size=0.15))
   ret <- ret + theme(axis.ticks=element_line())
   ret <- ret + theme(axis.ticks.x=element_line(color=base_color, size=0.15))
