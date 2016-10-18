@@ -1,6 +1,6 @@
 Package: swiTheme
 Type: Package
-Title: ggplot2 swissinfo.ch theme
+Title: swissinfo.ch chart themes, colours and convenience functions
 Version: 0.5
 Date: 2014-11-09
 Author: Duc-Quang Nguyen

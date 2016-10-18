@@ -8,7 +8,7 @@
 \alias{theme_swiYLines}
 \title{swissinfo.ch's chart theme}
 \usage{
-swi_theme(base_size = 13, base_family = "OpenSans-CondensedLight",
+swi_theme(base_size = 15, base_family = "OpenSans-CondensedLight",
   title_family = "OpenSans-CondensedBold",
   subtitle = "OpenSans-CondensedLight", y_gridlines = TRUE,
   base_color = "#2b2b2b")
