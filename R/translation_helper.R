@@ -1,8 +1,8 @@
 ##' Simple convenience function to load text data
 ##'
-##' loadTranslation(): load a csv file and discard verbosely incomplete columns  
+##' loadTranslation(): load a csv file and discard verbosely incomplete columns
 ##'
-##' @param path, a string path to a csv file with 
+##' @param path, a string path to a csv file with
 ##' @export
 
 loadTranslation <- function (path, ...) {
@@ -18,6 +18,5 @@ loadTranslation <- function (path, ...) {
     txt
   } else {
     stop("\n", path, "Not file can't be found with the path provided!\n")
-  }  
+  }
 }
-
