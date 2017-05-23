@@ -34,7 +34,7 @@ swi_pal <- c("#336666", "#368596", "#669999", "#366096",
 ##' @export
 ##' @examples
 ##' pie(rep(1,length(swi_col)), col=swi_col)
-swi_col <- c('#71302F', '#2F343B', '#7D8279', '#BDB198', '#E3CDA1', '#C87963')
+swi_col <- c("#193442","#4c6570","#7e827a","#beb298","#e3cda1","#d18768","#b15953","#72302f")
 
 ##' swissinfo random color palette
 ##'
