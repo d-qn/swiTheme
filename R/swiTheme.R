@@ -1,11 +1,11 @@
-c("#4A4A4A")##' swissinfo.ch's chart theme
+##' swissinfo.ch's chart theme
 ##'
 ##' swi_theme(): ggplot copied/inspired from https://gist.github.com/hrbrmstr/283850725519e502e70c
 ##'
 ##' @name theme_swi
 ##' @param y_gridlines, a logical display y gridlines?
 ##' @param title_family, a string typeface for title
-##' @param subtitle, a string typeface for subtitle
+##' @param subtitle_family, a string typeface for subtitle
 ##' @param base_color, a colour string used for the axis lines
 ##' @import ggplot2  
 ##' @importFrom extrafont loadfonts choose_font
@@ -16,6 +16,7 @@ c("#4A4A4A")##' swissinfo.ch's chart theme
 ##' require(swiTheme)
 ##' 
 ##' # swi_theme() with annotations
+##' 
 ##' gg <- qplot(1:10, 1:10) + swi_theme()
 ##' # add y-axis label 
 ##' gg <- gg + geom_label(aes(x = 0, y = 10, label="y label text"),
@@ -33,7 +34,6 @@ c("#4A4A4A")##' swissinfo.ch's chart theme
 ## # Define the axis labels, footnote and subtitle
 ##' gg <- gg + labs(x=NULL, y=NULL, title="This is a title, choose it wisely",
 ##' subtitle=subtitle, caption=caption)
-##' gg
 ##' #annotations TODO !!!!
 ##' 
 
@@ -41,7 +41,7 @@ swi_theme <- function(
   base_size = 15,
   base_family = "OpenSans-CondensedLight", 
   title_family = "OpenSans-CondensedBold",
-  subtitle = "OpenSans-CondensedLight",
+  subtitle_family = "OpenSans-CondensedLight",
   y_gridlines = TRUE,
   base_color = "#2b2b2b") {
   
@@ -70,10 +70,66 @@ swi_theme <- function(
   ret <- ret + theme(axis.ticks.length=unit(5, "pt"))
   ret <- ret + theme(plot.margin=unit(c(0.3, 0, 0.3, 0), "cm"))
   ret <- ret + theme(plot.title=element_text(family = title_family, size = base_size * 1.5, margin=margin(b=13)))
-  ret <- ret + theme(plot.subtitle=element_text(family = subtitle, color = '#4A4A4A'))
+  ret <- ret + theme(plot.subtitle=element_text(family = subtitle_family, color = '#4A4A4A'))
   ret <- ret + theme(plot.caption=element_text(size = base_size * 0.8, hjust=0, margin=margin(t=13), color = '#737373'))
   ret
 }
+
+##' swissinfo.ch theme for ggplot2
+##'
+##' swi_dark_map, a dark theme for maps with no axis, no ticks, no axis text, no grid lines
+##'
+##' @rdname theme_swi
+##' @inheritParams theme_swi
+##' @param bg.colour a string the colour of the chart background
+##' @param colour a string the colour for text
+##' @examples
+##' 
+##' # swi_dark_map
+##' \dontrun{
+##' qplot(1:10, 1:10, size = 10:1, color = I("red")) + 
+##' swi_dark_map() + 
+##' labs(title = "A dark map theme: no grid lines, no axes, no ticks", subtitle = "A subtitle")
+##' }
+##' @export
+swi_dark_map <- function(
+  base_size = 15, 
+  base_family = "OpenSans-CondensedLight",
+  title_family = "OpenSans-CondensedBold", 
+  subtitle_family = "OpenSans-CondensedLight",
+  bg.colour = '#1a0000', 
+  colour = '#ffffff'
+) {
+  ret <- theme_minimal(base_family = base_family, base_size = base_size)
+  ret <- ret + 
+    theme(
+      # PANEL, PLOT, AXIS & GRID
+      panel.background = element_rect(fill = bg.colour, size = 0, color = bg.colour),
+      panel.border = element_blank(),
+      plot.background = element_rect(fill = bg.colour, size = 0, color = bg.colour),
+      axis.line = element_blank(),
+      axis.ticks = element_blank(), 
+      axis.title = element_blank(), 
+      axis.text = element_blank(),
+      panel.grid.major=element_blank(),
+      panel.grid.minor=element_blank(),
+      plot.margin = unit(c(0.2, 0.2, 0, 0), "cm"),
+      # TEXT & LEGEND
+      plot.title = element_text(family = title_family, size = base_size * 1.4, margin=margin(b=13), colour = colour),
+      plot.subtitle = element_text(family = subtitle_family, color = colour),
+      plot.caption = element_text(size = base_size * 0.8, hjust=0, margin=margin(t=13), color = '#e6e6e6'),
+      legend.text = element_text(colour = colour, size = base_size, hjust = 1),
+      legend.title = element_text(colour = colour, size = base_size * 1.1),
+      legend.key.width = unit(1.4, "lines"),
+      legend.key.height = unit(0.6, "lines"),
+      legend.position = "top",
+      legend.title.align = 0,
+      strip.text = element_text(family = title_family, colour = "#ffe6e6", size = 14)
+    ) 
+  ret
+}
+
+
 
 ##' swissinfo.ch's chart theme
 ##'
@@ -84,11 +140,11 @@ swi_theme <- function(
 ##' @param base_size Base font size
 ##' @param base_family Base font family
 ##' @import ggplot2 
-##' @importFrom scales alpha
 ##' @importFrom grid unit
 ##' @importFrom extrafont loadfonts choose_font
 ##' @export
 ##' @examples
+##' 
 ##' qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi()
 ##' qplot(mtcars$mpg) + theme_swi()
 ##'
@@ -118,7 +174,9 @@ theme_swi <- function(ticks=TRUE, base_family="Open Sans", base_size=11) {
 ##' @inheritParams theme_swi
 ##' @param axisColor the color for the axis and their ticks and labels
 ##' @param base_family2 secondary font family
+##' @param yaxis a logical display the y axis
 ##' @examples
+##' 
 ##' qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swiYLines()
 ##' @export
 theme_swiYLines <- function(
@@ -163,8 +221,6 @@ theme_swiYLines <- function(
 ##'
 ##' @rdname theme_swi
 ##' @inheritParams theme_swi
-##' @param axisColor the color for the axis and their ticks and labels
-##' @param base_family2 secondary font family
 ##' @examples
 ##' qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi2()
 ##' @export
@@ -196,6 +252,7 @@ theme_swi2 <- function(
 ##' @rdname theme_swi
 ##' @inheritParams theme_swi
 ##' @examples
+##' 
 ##'  qplot(1:10, 1:10, size = 10:1) + theme_swiMin() + ggtitle("Minimal theme: no axis & no ticks")
 ##' @export
 theme_swiMin <- function(base_family="Open Sans", base_size=11) {

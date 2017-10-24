@@ -3,6 +3,7 @@
 ##' Simple wrapper for R's graphics device driver (i.e. pdf) to save charts in pre-defined sizes
 ##'
 ##' @rdname swi_export
+##' @param \dots arguments passed on to \code{pdf}
 ##' @importFrom grDevices pdf 
 ##' @inheritParams grDevices::pdf
 ##' @export

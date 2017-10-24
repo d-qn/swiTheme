@@ -3,6 +3,8 @@
 ##' loadTranslation(): load a csv file and discard verbosely incomplete columns
 ##'
 ##' @param path, a string path to a csv file with
+##' @param \dots passed on to \code{read.csv}
+##' @importFrom utils read.csv
 ##' @export
 
 loadTranslation <- function (path, ...) {

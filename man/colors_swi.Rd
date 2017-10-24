@@ -2,12 +2,12 @@
 % Please edit documentation in R/colors.R
 \docType{data}
 \name{swi_pal}
+\alias{swi_pal}
 \alias{swi_col}
+\alias{swi_rpal}
 \alias{swi_dpal}
 \alias{swi_dpal2}
 \alias{swi_dpal3}
-\alias{swi_pal}
-\alias{swi_rpal}
 \alias{swi_spal}
 \title{swissinfo.ch standard color palette}
 \format{An object of class \code{character} of length 22.}
@@ -59,4 +59,3 @@ pie(rep(1,length(swi_dpal3)), col=swi_dpal3)
 pie(rep(1,length(swi_spal)), col=swi_spal)
 }
 \keyword{datasets}
-

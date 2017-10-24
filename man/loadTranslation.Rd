@@ -8,8 +8,9 @@ loadTranslation(path, ...)
 }
 \arguments{
 \item{path, }{a string path to a csv file with}
+
+\item{\dots}{passed on to \code{read.csv}}
 }
 \description{
 loadTranslation(): load a csv file and discard verbosely incomplete columns
 }
-

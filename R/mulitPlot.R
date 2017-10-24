@@ -4,7 +4,7 @@
 ##'
 ##'  Arrange different ggplot objects on the same page
 ##'
-##' @param plots a list of ggplot objects
+##' @param plotlist a list of ggplot objects
 ##' @param cols Number of columns in layout
 ##' @param layout A matrix specifying the layout. If present, 'cols' is ignored.
 ##' @details If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE), then plot 1 will go in the upper left, 2 will go in the upper right, and ll go all the way across the bottom.
@@ -17,8 +17,9 @@
 ##' @export
 ##' @examples
 ##' require(ggplot2)
-##' q1 <- qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi2()
-##' q2 <- qplot(mpg, data = mtcars, geom = "dotplot") + theme_swi()
+##' require(swiTheme)
+##' q1 <- qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label")
+##' q2 <- qplot(mpg, data = mtcars, geom = "dotplot")
 ##' multiplot(list(q1, q2))
 multiplot <- function(plotlist=NULL, cols=1, layout=NULL) {
   

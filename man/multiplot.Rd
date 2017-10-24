@@ -7,11 +7,11 @@
 multiplot(plotlist = NULL, cols = 1, layout = NULL)
 }
 \arguments{
+\item{plotlist}{a list of ggplot objects}
+
 \item{cols}{Number of columns in layout}
 
 \item{layout}{A matrix specifying the layout. If present, 'cols' is ignored.}
-
-\item{plots}{a list of ggplot objects}
 }
 \description{
 To arrange multiple ggplot chart on a grid. Copied from: http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
@@ -23,8 +23,8 @@ If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE), then plo
 }
 \examples{
 require(ggplot2)
-q1 <- qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label") + theme_swi2()
-q2 <- qplot(mpg, data = mtcars, geom = "dotplot") + theme_swi()
+require(swiTheme)
+q1 <- qplot(1:10, 1:10, size = 10:1) + xlab("axis x label") + ylab ("y axis label")
+q2 <- qplot(mpg, data = mtcars, geom = "dotplot")
 multiplot(list(q1, q2))
 }
-
